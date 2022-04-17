@@ -84,42 +84,51 @@ elFilterForm.addEventListener("submit", function (evt) {
 })
 
 
-const parrotTitle = document.querySelector("#edit-parrotTitle");
-const parrotPrice = document.querySelector("#edit-price");
-const parrotDate = document.querySelector("#edit-date");
+// const parrotTitle = document.querySelector("#edit-parrotTitle");
+// const parrotPrice = document.querySelector("#edit-price");
+// const parrotDate = document.querySelector("#edit-date");
 
-const editForm = document.querySelector("#edit-form");
-const editParrotModalEl = document.querySelector("#edit-parrot-modal");
-const editParrotModal = new bootstrap.Modal(editParrotModalEl);
+// const editForm = document.querySelector("#edit-form");
+// const editParrotModalEl = document.querySelector("#edit-parrot-modal");
+// const editParrotModal = new bootstrap.Modal(editParrotModalEl);
 
-editForm.addEventListener("click", function(evt){
-  if(evt.target.matches(".btn-secondary")){
-    const clickedItemId = +evt.target.dataset.id;
+// editForm.addEventListener("click", function(evt){
+//   if(evt.target.matches(".btn-secondary")){
+//     const clickedItemId = +evt.target.dataset.id;
 
-    const clickedItemIndex = products.findIndex(function(product){
-      return product.id === clickedItemId
-    })
-    showingProducts.splice(clickedItemIndex, 1);
-    products.splice(clickedItemIndex, 1);
+//     const clickedItemIndex = products.findIndex(function(product){
+//       return product.id === clickedItemId
+//     })
+//     showingProducts.splice(clickedItemIndex, 1);
+//     products.splice(clickedItemIndex, 1);
 
-    renderProducts();
-  }else if(evt.target.matches(".btn-secondary")){
-    const clickedId = +evt.target.dataset.id;
+//     renderProducts();
+//   }else if(evt.target.matches(".btn-secondary")){
+//     const clickedId = +evt.target.dataset.id;
 
-    const clickedItem = products.find(function(product){
-      return product.id === clickedId
-    })
+//     const clickedItem = products.find(function(product){
+//       return product.id === clickedId
+//     })
 
-    parrotTitle.value = clickedItem.title;
-    parrotPrice.value = clickedItem.price;
-    parrotDate.value = clickedItem.date;
+//     parrotTitle.value = clickedItem.title;
+//     parrotPrice.value = clickedItem.price;
+//     parrotDate.value = clickedItem.date;
 
-    editForm.setAttribute("data-editing-id", clickedItem.id)
+//     editForm.setAttribute("data-editing-id", clickedItem.id)
 
-  }
-})
+//   }
+// })
 
-renderProducts();
+// renderProducts();
+
+
+// const elAddForm = document.querySelector("#add-form");
+
+// elAddForm.addEventListener("submit", function (evt) {
+//   evt.preventDefault();
+
+//   const
+// })
 
 const addForm = document.querySelector(".add-form");
 const parrotModal = new bootstrap.Modal(document.querySelector("#add-parrot-modal"));
@@ -129,7 +138,7 @@ addForm.addEventListener("submit", function (evt) {
 
   const nameInput = evt.target.elements.parrotTitle;
   const priceInput = evt.target.elements.price;
-  const dateInput = evt.target.elements.parrot - date;
+  const dateInput = evt.target.elements.parrot_date;
 
   const nameValue = nameInput.value;
   const priceValue = priceInput.value;
@@ -143,8 +152,8 @@ addForm.addEventListener("submit", function (evt) {
       price: priceValue,
       addedDate: new Date().toISOString(),
     }
-    products.push(product);
-
+    product.push(product);
+    localStorage.setItem("products", JSON.stringify(products));
     showingProducts.push(product);
 
     addForm.reset();
