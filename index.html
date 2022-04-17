@@ -219,6 +219,59 @@
   </div>
 
 
+  <div class="modal fade" id="edit-parrot-modal" tabindex="-1" aria-labelledby="editParrotTitleLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editParrotTitleLabel">Add parrot</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" data-bs-target=""
+            aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="edit-form">
+            <div class="mb-3">
+              <label for="parrot-title" class="form-label">Title</label>
+              <input type="search" class="form-control" id="edit-parrotTitle" placeholder="Kakatu">
+            </div>
+            <div class="mb-3">
+              <label for="parrot-img" class="form-label">Img URL</label>
+              <input type="text" class="form-control" id="edit-parrot-img" placeholder="https://...">
+            </div>
+            <div class="mb-3">
+              <label for="parrotPrice" class="form-label">Price ($)</label>
+              <input type="number" class="form-control" id="lastNameEdit" placeholder="1000">
+            </div>
+            <div class="mb-3">
+              <label for="parrotDate" class="form-label">Birth date</label>
+              <input type="date" class="form-control" id="edit-date" placeholder="12.02.2022">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Width and Height</label>
+              <div class="row">
+                <div class="col-6">
+                  <input type="number" class="form-control" id="edit_width" min="0" aria-label="Parrot width"
+                    placeholder="Parrot width">
+                </div>
+                <div class="col-6">
+                  <input type="number" class="form-control" id="edit_height" min="0" aria-label="Parrot height"
+                    placeholder="Parrot height">
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="features" class="form-label">Features ("," bilan ajratib yozing)</label>
+              <input type="text" class="form-control" id="edit-features" placeholder="Qo'lga o'rgatilgan,Gapira oladi">
+            </div>
+            <button type="submit" class="btn btn-primary d-block w-100 p-2">Filter</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
 
   <template id="template">

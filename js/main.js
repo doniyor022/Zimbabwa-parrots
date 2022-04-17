@@ -83,17 +83,73 @@ elFilterForm.addEventListener("submit", function (evt) {
   renderProducts();
 })
 
+
+const parrotTitle = document.querySelector("#edit-parrotTitle");
+const parrotPrice = document.querySelector("#edit-price");
+const parrotDate = document.querySelector("#edit-date");
+
+const editForm = document.querySelector("#edit-form");
+const editParrotModalEl = document.querySelector("#edit-parrot-modal");
+const editParrotModal = new bootstrap.Modal(editParrotModalEl);
+
+editForm.addEventListener("click", function(evt){
+  if(evt.target.matches(".btn-secondary")){
+    const clickedItemId = +evt.target.dataset.id;
+
+    const clickedItemIndex = products.findIndex(function(product){
+      return product.id === clickedItemId
+    })
+    showingProducts.splice(clickedItemIndex, 1);
+    products.splice(clickedItemIndex, 1);
+
+    renderProducts();
+  }else if(evt.target.matches(".btn-secondary")){
+    const clickedId = +evt.target.dataset.id;
+
+    const clickedItem = products.find(function(product){
+      return product.id === clickedId
+    })
+
+    parrotTitle.value = clickedItem.title;
+    parrotPrice.value = clickedItem.price;
+    parrotDate.value = clickedItem.date;
+
+    editForm.setAttribute("data-editing-id", clickedItem.id)
+
+  }
+})
+
+renderProducts();
+
 const addForm = document.querySelector(".add-form");
 const parrotModal = new bootstrap.Modal(document.querySelector("#add-parrot-modal"));
 
-addForm.addEventListener("submit", function(evt){
+addForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
 
   const nameInput = evt.target.elements.parrotTitle;
   const priceInput = evt.target.elements.price;
-  const dateInput = evt.target.elements.parrot-date;
+  const dateInput = evt.target.elements.parrot - date;
 
   const nameValue = nameInput.value;
   const priceValue = priceInput.value;
-  const dateInput = 
+  const dateValue = dateInput.value;
+
+  if (nameValue.trim() && priceValue.trim() && dateValue.trim()) {
+    const product = {
+      id: Math.floor(Math.random() * 1000),
+      title: nameValue,
+      img: "https://picsum.photos/300/200",
+      price: priceValue,
+      addedDate: new Date().toISOString(),
+    }
+    products.push(product);
+
+    showingProducts.push(product);
+
+    addForm.reset();
+    produktModal.hide();
+
+    renderProducts();
+  }
 })
